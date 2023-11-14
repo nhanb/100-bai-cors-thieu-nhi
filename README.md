@@ -18,7 +18,16 @@ set it on azure portal:
 Run `make deploy-be` to make sure the app restarts with the right envar I
 guess.
 
-Dev:
+Now go to http://your-app.azurewebsites.net/api/hello/ - you should see an
+empty web page with the message `Greetings from $BACKEND_ENV.`
+
+# 2. Authentication setup
+
+Go to your app on azure portal, Authentication, Add Identity Provider.
+
+![](02-add-idp.png)
+
+# Misc
 
 ```sh
 make be # http://localhost:8000/api/hello/
