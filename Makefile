@@ -1,5 +1,5 @@
 be:
-	cd backend; find . -name '*.py' | entr -rc python main.py
+	cd backend; find . -name '*.py' | BACKEND_ENV=local entr -rc python main.py
 
 fe:
 	cd frontend; npm start
