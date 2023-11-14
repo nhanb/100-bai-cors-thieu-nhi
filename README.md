@@ -6,7 +6,7 @@ pipx install azure-cli
 
 # Uses az to create & deploy webapp;
 # You'll get a ./backend/.azure/config file - keep it.
-make deploy-be
+make init-be
 ```
 
 Backend uses a `BACKEND_ENV` envar to identify itself.
@@ -15,7 +15,8 @@ set it on azure portal:
 
 ![](01-envar.png)
 
-Run `make deploy-be` again to make sure the app restarts with the right envar.
+Run `make deploy-be` to make sure the app restarts with the right envar I
+guess.
 
 Dev:
 
