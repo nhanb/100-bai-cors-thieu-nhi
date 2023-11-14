@@ -28,6 +28,10 @@
     X-ZUMO-AUTH: <authenticationToken_value>
     ```
 
+6. Of course, remember to allow your CORS:
+
+    ![](04-cors.png)
+
 Profit?
 
 ---
