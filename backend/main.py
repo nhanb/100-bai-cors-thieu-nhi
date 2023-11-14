@@ -11,4 +11,4 @@ def hello():
 
 
 print(f"Starting [{BACKEND_ENV}] server")
-run(host="localhost", port=8000, debug=True)
+run(host="0.0.0.0", port=8000, debug=True)

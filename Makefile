@@ -4,5 +4,5 @@ be:
 fe:
 	cd frontend; npm start
 
-create-be:
+deploy-be:
 	cd backend; az webapp up --location southeastasia --runtime PYTHON:3.9 --sku F1
