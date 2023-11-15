@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vanilla callback</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <p>
+      Authenticate yourself here:
+      <a
+        href="https://lemon-dune-53a40aed52cd44baa7a7eef38b5c466d.azurewebsites.net/.auth/login/aad?post_login_redirect_uri=http%3A%2F%2Fhost.local%3A4000%2F"
+        >https://lemon-dune-53a40aed52cd44baa7a7eef38b5c466d.azurewebsites.net/.auth/login/aad?post_login_redirect_uri=http%3A%2F%2Fhost.local%3A4000%2F</a
+      >
+    </p>
+
+    <p>Hash: <span id="#hash">n/a</span></p>
+
+    <script>
+      const hash = window.location.hash;
+      if (hash) {
+        document.querySelector("#hash").innerHTML = hash;
+      }
+    </script>
+  </body>
+</html>
