@@ -1,6 +1,11 @@
-Demo:
+Demo: see ./aad-demo.mp4
 
-./aad-demo.mp4
+**Updates not shown in video:**
+
+- Backend now echos headers of interest.
+- Frontend has an additional "Call /.auth/me" feature.
+
+![](00-ui.png)
 
 # The general principle
 

@@ -46,18 +46,19 @@ const Home = () => {
   }
 
   // We have a token now. Use it.
-  function callApi(useToken) {
+  function callApi(endpoint, useToken) {
     setErrText("");
     setRespText("");
 
     const tok = useToken ? token : "";
 
-    fetch(`${BE_URL}/api/hello/`, {
+    fetch(endpoint, {
       headers: {
         "X-ZUMO-AUTH": tok,
       },
     })
-      .then((resp) => resp.text())
+      .then((resp) => resp.json())
+      .then((obj) => JSON.stringify(obj, null, 2))
       .then(setRespText)
       .catch((err) => {
         setErrText(err.toString());
@@ -70,14 +71,21 @@ const Home = () => {
       <p>Token: {token}</p>
       <button
         onClick={() => {
-          callApi(true);
+          callApi(`${BE_URL}/.auth/me`, true);
+        }}
+      >
+        Call /.auth/me
+      </button>{" "}
+      <button
+        onClick={() => {
+          callApi(`${BE_URL}/api/hello/`, true);
         }}
       >
         Call API
       </button>{" "}
       <button
         onClick={() => {
-          callApi(false);
+          callApi(`${BE_URL}/api/hello/`, false);
         }}
       >
         Call API without token
