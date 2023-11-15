@@ -1,0 +1,1 @@
+# apparently az cli now requires a requirements.txt for some reason.

@@ -83,9 +83,10 @@ const Home = () => {
         Call API without token
       </button>
       {respText ? (
-        <p>
-          Response from api: <b>{respText}</b>
-        </p>
+        <div>
+          <p>Response from api:</p>
+          <pre>{respText}</pre>
+        </div>
       ) : (
         ""
       )}
