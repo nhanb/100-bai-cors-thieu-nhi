@@ -1,7 +1,11 @@
-# TL;DR
+Demo:
+
+./aad-demo.mp4
+
+# The general principle
 
 1. In Authentication settings, add allowed external redirect URL, say,
-   `http://host.local:3000/` (localhost would be rejected)
+   `http://host.local:3000/aad-callback/` (localhost would be rejected)
 2. In **/etc/hosts**, add `127.0.0.1 host.local`
 3. Visit this link:
 
@@ -10,8 +14,9 @@
             ^-------^ your azure webapp              your external redirect url ^-------------------------------^
     ```
 
-4. After a successful login, you will be redirect to http://host.local:3000/,
-   which is FE. In FE, read the `#token={...}` fragment. [Here's the docs.][doc1]
+4. After a successful login, you will be redirect to
+   http://host.local:3000/aad-callback/, which is FE.
+   In FE, read the `#token={...}` fragment. [Here's the docs.][doc1]
    An example:
 
     ```json
@@ -34,11 +39,26 @@
 
 Profit?
 
----
 
-The following is an explain-like-I'm-five step-by-step guide.
+# How to reproduce this demo specifically
 
-# 1. Deploy backend as an Azure webapp
+There are 2 services: ./backend/ to be deployed on AZ, while ./frontend/ to run
+locally.
+
+Before running anything, copy .env.sample to .env, enter your correct
+`REACT_APP_BACKEND_URL`, then source those environment variables using your
+favorite method (I like direnv personally).
+
+Now you can try running both locally:
+
+```sh
+make be # http://localhost:8000/api/hello/
+make fe # http://localhost:3000
+```
+
+Turn off be, then read on:
+
+## 1. Deploy backend as an Azure webapp
 
 ```sh
 # This installs `az` into your $PATH:
@@ -61,7 +81,7 @@ guess.
 Now go to http://your-app.azurewebsites.net/api/hello/ - you should see an
 empty web page with the message `Greetings from $BACKEND_ENV.`
 
-# 2. Authentication setup
+## 2. Authentication setup
 
 Go to your app on azure portal, Authentication, Add Identity Provider.
 
@@ -72,13 +92,6 @@ external redirect URLs". Open your **/etc/hosts**, add `127.0.0.1 host.local`.
 
 ![](03-callback-url.png)
 
-Now follow steps 3, 4, 5 in the TL;DR above.
-
-# Misc
-
-```sh
-make be # http://localhost:8000/api/hello/
-make fe # http://localhost:3000
-```
+Now follow steps 3 -> 6 in "The genral principle" above.
 
 [doc1]: https://learn.microsoft.com/en-us/azure/app-service/configure-authentication-customize-sign-in-out#use-multiple-sign-in-providers
