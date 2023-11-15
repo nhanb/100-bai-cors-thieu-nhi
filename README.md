@@ -64,6 +64,8 @@ Turn off be, then read on:
 # This installs `az` into your $PATH:
 pipx install azure-cli
 
+cd frontend && npm install && cd ..
+
 # Uses az to create & deploy webapp;
 # You'll get a ./backend/.azure/config file - keep it.
 make init-be
@@ -92,6 +94,6 @@ external redirect URLs". Open your **/etc/hosts**, add `127.0.0.1 host.local`.
 
 ![](03-callback-url.png)
 
-Now follow steps 3 -> 6 in "The genral principle" above.
+Now follow steps 3 to 6 in "The general principle" above.
 
 [doc1]: https://learn.microsoft.com/en-us/azure/app-service/configure-authentication-customize-sign-in-out#use-multiple-sign-in-providers
